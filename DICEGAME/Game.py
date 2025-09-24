@@ -18,13 +18,16 @@ class DiceGame:
     # Roll the dices and display the result     
     def roll_dices(self, num_dices):
         count = 0
+        sum_totals = 0
         isActive = True
         while isActive:
             ask_user = input("Roll the dices? (y/n): ")
             if ask_user == 'y' or ask_user == 'Y':
                 self.roll = tuple(random.randint(1, self.sides) for _ in range(num_dices))
                 count += 1
-                print("You rolled:", self.roll, " | Total rolls:", count)
+                sum_totals += sum(self.roll)
+                print("You rolled:", self.roll, " | Total:", sum_totals, " | Times Rolled:", count)
+                sum_totals = 0
             elif ask_user == 'n' or ask_user == 'N':
                 isActive = False
                 print("Game Over")
